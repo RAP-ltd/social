@@ -25,7 +25,6 @@ spl_autoload_register(
             require_once $class_file;
         } else {
             if (preg_match("/^app\\\controllers\\\(?<controller>(.*))$/i", $class, $matches)) {
-                print_r($matches);
             } else {
                 echo "Class file of {$class} not found in {$class_file}\r\n";
             }
