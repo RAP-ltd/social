@@ -8,5 +8,6 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = new \RAP\App();
-$app->Run();
+$config = require __DIR__ . '/../config/web.php';
+
+(new \RAP\Application($config))->Run();

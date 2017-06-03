@@ -10,7 +10,10 @@ return [
     'language' => 'ru-RU',
     'routing' => [
         'errors' => [
-            'error404' => 'site/error404'
+            'error404' => [
+                'controller' => 'app\\controllers\\SiteController',
+                'action' => 'actionError404'
+            ]
         ],
         'rules' => [
             //
