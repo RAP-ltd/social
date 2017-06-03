@@ -12,11 +12,11 @@ class SiteController
 {
     public function actionError404()
     {
-        return 'Error 404 !';
+        return '<h1>Error 404 !</h1>';
     }
 
     public function actionIndex()
     {
-        return 'Hello world!';
+        return '<h1>Hello world!</h1>';
     }
 }

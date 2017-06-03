@@ -24,8 +24,10 @@ spl_autoload_register(
         if (file_exists($class_file)) {
             require_once $class_file;
         } else {
-            if (!preg_match("/^app/i", $class, $matches)) {
-                echo "Class file not found in {$class_file}";
+            if (preg_match("/^app\\\controllers\\\(?<controller>(.*))$/i", $class, $matches)) {
+                print_r($matches);
+            } else {
+                echo "Class file of {$class} not found in {$class_file}\r\n";
             }
         }
     }
