@@ -28,18 +28,16 @@ class View
 
     public function renderTemplate($view, $params = [])
     {
-        ob_start();
-        ob_implicit_flush(false);
         $params['VIEW_CONTENT'] = $this->render($view, $params);
-        echo $this->render('../layouts/main', $params);
-        return ob_get_clean();
+        return $this->render('../' . $this->config['defaultView'], $params);
     }
 
     public function render($view, $params = [])
     {
         extract($params);
         ob_start();
-        echo include $this->viewPath . '/' . $this->classPath . '/' . $view . '.php';
+        ob_implicit_flush(false);
+        include $this->viewPath . '/' . $this->classPath . '/' . $view . '.php';
         return ob_get_clean();
     }
 }

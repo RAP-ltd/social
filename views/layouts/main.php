@@ -5,12 +5,13 @@
  * Date: 04.06.2017
  * Time: 19:38
  */
-$this->title = 'R.A.P main';
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title><?= $this->title ?></title>
+    <meta charset="utf8">
 </head>
 <body>
 <?= $VIEW_CONTENT ?>
