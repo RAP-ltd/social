@@ -23,10 +23,21 @@ class Routing
         $uri_length = strpos($_SERVER['REQUEST_URI'], '?');
         $this->uri = substr($_SERVER['REQUEST_URI'], $uri_length);
         foreach ($config['rules'] as $pattern => $route) {
-
-            if (preg_match("/{$pattern}/i", $this->uri, $params)) {
+            $pattern = addslashes($pattern);
+            $pattern = str_replace('\\\\', '\\', $pattern);
+            if (preg_match("%^{$pattern}$%i", $this->uri, $params)) {
+                $route = str_replace([
+                    '<controller>',
+                    '<action>'
+                ], [
+                    $params['controller'],
+                    $params['action']
+                ], $route);
                 $this->uri = $route;
                 $this->params = $params;
+                if (isset($params['action'])) {
+                    $this->action = $params['action'];
+                }
                 break;
             }
         }

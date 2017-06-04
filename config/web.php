@@ -16,7 +16,11 @@ return [
             ]
         ],
         'rules' => [
-            '' => 'site/index'
-        ]
+            "/site/index/(?<param>(\w+))/(?<user_id>(\d+))" => "site/index",
+            "/id(?<user_id>(\d+))" => "site/index",
+            "/(?<action>(\w+))" => "site/<action>",
+            "/(?<controller>(.*))/(?<action>)" => "<controller>/<action>",
+            "/" => "site/index"
+        ],
     ]
 ];
