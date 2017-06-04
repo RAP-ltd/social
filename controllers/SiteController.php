@@ -14,7 +14,7 @@ class SiteController extends Controller
 {
     public function actionError404()
     {
-        return '<h1>Error 404 !</h1>';
+        return $this->render('error404');
     }
 
     public function actionIndex()

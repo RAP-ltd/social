@@ -16,11 +16,11 @@ return [
             ]
         ],
         'rules' => [
-            "/site/<param:\w+>/<user_id:\d+>" => "site/index",
-            "/id<user_id:\d+>" => "site/index",
-            "/<action>" => "site/<action>",
-            "/<controller>/<action>" => "<controller>/<action>",
-            "/" => "site/index"
+            "site/<param:\w+>/<user_id:\d+>" => "site/index",
+            "id<user_id:\d+>" => "site/index",
+            "<controller>/<action>" => "<controller>/<action>",
+            "<action>" => "site/<action>",
+            "" => "site/index"
         ],
     ],
     'defaultView' => 'layouts/main'

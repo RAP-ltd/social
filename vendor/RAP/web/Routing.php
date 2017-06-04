@@ -20,13 +20,16 @@ class Routing
     public function __construct($config)
     {
         $this->config = $config;
-        $uri_length = strpos($_SERVER['REQUEST_URI'], '?');
-        $this->uri = substr($_SERVER['REQUEST_URI'], 0, $uri_length);
+        if ($uri_length = strpos($_SERVER['REQUEST_URI'], '?')) {
+            $this->uri = substr($_SERVER['REQUEST_URI'], 0, $uri_length);
+        } else {
+            $this->uri = $_SERVER['REQUEST_URI'];
+        }
         foreach ($config['rules'] as $pattern2 => $route) {
             $pattern = preg_replace("%<(\w+)\:\\\\(\w\+?)>%i", "(?<$1>(\\\\$2))", $pattern2);
             $pattern = preg_replace("%<controller>%i", "(?<controller>(.*))", $pattern);
             $pattern = preg_replace("%<action>%i", "(?<action>(\w+))", $pattern);
-            if (preg_match("%^{$pattern}$%i", $this->uri, $params)) {
+            if (preg_match("%^\\/?{$pattern}$%i", $this->uri, $params)) {
                 $route = str_replace([
                     '<controller>',
                     '<action>'

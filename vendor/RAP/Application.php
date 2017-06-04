@@ -28,6 +28,10 @@ class Application
         $controller = $route['controller'];
         $action = $route['action'];
         $this->request = $routing->getParams();
+        if (empty($controller) || empty($action)) {
+            $controller = $this->config['routing']['errors']['error404']['controller'];
+            $action = $this->config['routing']['errors']['error404']['action'];
+        }
         echo (new $controller($this->request()))->$action();
     }
 
