@@ -6,8 +6,12 @@
  * Time: 22:46
  */
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$dir = include __DIR__ . '/../app_dir.php';
 
-$config = require __DIR__ . '/../config/web.php';
+define('ROOT', $dir['dir']);
+
+require_once ROOT . '/vendor/autoload.php';
+
+$config = require ROOT . '/config/web.php';
 
 (new \RAP\Application($config))->Run();

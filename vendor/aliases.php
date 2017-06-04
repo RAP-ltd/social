@@ -8,5 +8,5 @@
 
 return [
     'RAP' => __DIR__ . '/RAP',
-    'app' => __DIR__ . '/..'
+    'app' => ROOT
 ];
