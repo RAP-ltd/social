@@ -8,6 +8,8 @@
 
 namespace RAP\web;
 
+use RAP\web\View;
+
 class Controller
 {
     protected $classPath;
@@ -26,12 +28,14 @@ class Controller
         return $this->request;
     }
 
+    protected function renderTemplate($view, $params = [])
+    {
+        $render = new View($this->viewPath, $this->classPath, $params);
+        return $render->renderTemplate($view, $params);
+    }
+
     public function render($view, $params = [])
     {
-        extract($params);
-        ob_start();
-        $render = include $this->viewPath . '/' . $this->classPath . '/' . $view . '.php';
-        ob_clean();
-        return $render;
+        return $this->renderTemplate($view, $params);
     }
 }

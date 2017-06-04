@@ -19,7 +19,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $param = $this->request()->get('param');
-        return '<h1>Hello world!</h1> param = ' . $param . '<br>user_id = ' . $this->request()->get('user_id');
+        return $this->render('index', ['test' => 123]);
     }
 }

@@ -22,5 +22,6 @@ return [
             "/<controller>/<action>" => "<controller>/<action>",
             "/" => "site/index"
         ],
-    ]
+    ],
+    'defaultView' => 'layouts/main'
 ];
