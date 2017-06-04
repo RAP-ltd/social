@@ -12,8 +12,16 @@
 <head>
     <title><?= $this->title ?></title>
     <meta charset="utf8">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.css">
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-<?= $VIEW_CONTENT ?>
+<div class="container">
+<div class="content">
+    <?= $VIEW_CONTENT ?>
+</div>
+</div>
 </body>
 </html>
