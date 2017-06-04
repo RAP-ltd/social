@@ -8,7 +8,9 @@
 
 namespace app\controllers;
 
-class SiteController
+use RAP\web\Controller;
+
+class SiteController extends Controller
 {
     public function actionError404()
     {
@@ -17,6 +19,7 @@ class SiteController
 
     public function actionIndex()
     {
-        return '<h1>Hello world!</h1>';
+        $param = $this->request()->get('param');
+        return '<h1>Hello world!</h1> param = ' . $param;
     }
 }

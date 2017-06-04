@@ -16,7 +16,7 @@ return [
             ]
         ],
         'rules' => [
-            //
+            '' => 'site/index'
         ]
     ]
 ];

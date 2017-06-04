@@ -9,10 +9,12 @@
 namespace RAP;
 
 use RAP\web\Routing;
+use RAP\web\Request;
 
 class Application
 {
     protected $config;
+    protected $request;
 
     public function __construct($config)
     {
@@ -21,9 +23,16 @@ class Application
 
     public function Run()
     {
-        $route = (new Routing($this->config['routing']))->getRoute();
+        $routing = new Routing($this->config['routing']);
+        $route = $routing->getRoute();
         $controller = $route['controller'];
         $action = $route['action'];
-        echo (new $controller)->$action();
+        $this->request = $routing->getParams();
+        echo (new $controller($this->request()))->$action();
+    }
+
+    public function request()
+    {
+        return (new Request($this->request));
     }
 }

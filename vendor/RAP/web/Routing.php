@@ -14,12 +14,22 @@ class Routing
     protected $controller;
     protected $action;
     protected $config;
+    protected $params;
+    protected $request;
 
     public function __construct($config)
     {
         $this->config = $config;
         $uri_length = strpos($_SERVER['REQUEST_URI'], '?');
         $this->uri = substr($_SERVER['REQUEST_URI'], $uri_length);
+        foreach ($config['rules'] as $pattern => $route) {
+
+            if (preg_match("/{$pattern}/i", $this->uri, $params)) {
+                $this->uri = $route;
+                $this->params = $params;
+                break;
+            }
+        }
         $this->parseURI();
     }
 
@@ -55,5 +65,10 @@ class Routing
             'controller' => $this->controller,
             'action' => $this->action
         ];
+    }
+
+    public function getParams()
+    {
+        return $this->params;
     }
 }
