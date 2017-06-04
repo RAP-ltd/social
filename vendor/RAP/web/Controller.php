@@ -19,7 +19,6 @@ class Controller
         $this->request = $request;
         $this->classPath = strtolower(preg_replace('%^app\\\controllers\\\(.*)Controller$%i', '$1', get_class($this)));
         $this->viewPath = ROOT . '/views';
-        echo $this->viewPath;
     }
 
     public function request()
