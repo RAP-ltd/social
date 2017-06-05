@@ -10,7 +10,7 @@ $this->title = 'R.A.P';
 ?>
 
 <div class="site-index">
-    <div class="row alert-dismissable">
+    <div class="row alert-danger">
         <div class="col-sm-3 alert-success">
             <ul class="list-group">
                 <li class="list-group-item">link1</li>

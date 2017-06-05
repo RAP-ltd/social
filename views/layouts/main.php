@@ -19,9 +19,16 @@
 </head>
 <body>
 <div class="container">
-<div class="content">
-    <?= $VIEW_CONTENT ?>
-</div>
+    <div class="row">
+        <div class="col-sm-2">
+            //
+        </div>
+        <div class="col-sm-10">
+            <div class="content">
+                <?= $VIEW_CONTENT ?>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
