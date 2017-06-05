@@ -14,4 +14,6 @@ require_once ROOT . '/vendor/autoload.php';
 
 $config = require_once ROOT . '/config/web.php';
 
+define('APP_CONFIG', $config);
+
 (new \RAP\Application($config))->Run();

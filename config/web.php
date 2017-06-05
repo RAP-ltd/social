@@ -20,6 +20,7 @@ return [
             "id<user_id:\d+>" => "site/index",
             "<controller>/<action>" => "<controller>/<action>",
             "<action>" => "site/<action>",
+            "<controller:\w+>" => "<controller>/index",
             "" => "site/index"
         ],
     ],

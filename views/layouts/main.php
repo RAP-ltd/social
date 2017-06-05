@@ -17,11 +17,22 @@
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-color: #faf7c7">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-brand"><a href="/">R.A.P</a></div>
+    </div>
+</nav>
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
-            //
+            <div class="list-group">
+                <a href="#" class="list-group-item">Item 1</a>
+                <a href="#" class="list-group-item">Item 2</a>
+                <a href="/messages/index" class="list-group-item">Сообщения</a>
+                <a href="#" class="list-group-item">Item 4</a>
+                <a href="#" class="list-group-item">Item 5</a>
+            </div>
         </div>
         <div class="col-sm-10">
             <div class="content">

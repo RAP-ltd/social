@@ -21,6 +21,7 @@ class Request
         if (!empty($params)) {
             foreach ($params as $param => $value) {
                 $this->get[$param] = $value;
+                $_GET[$param] = $value;
             }
         }
         $this->post = $_POST;
