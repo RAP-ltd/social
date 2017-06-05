@@ -25,9 +25,11 @@
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-2 col-xs-4">
             <div class="list-group">
-                <a href="#" class="list-group-item">Item 1</a>
+                <a href="#" class="list-group-item">
+                    <span class="visible-xs glyphicon glyphicon-apple"></span>
+                    <span class="hidden-xs">Item 1</span></a>
                 <a href="#" class="list-group-item">Item 2</a>
                 <a href="/messages/index" class="list-group-item">Сообщения</a>
                 <a href="#" class="list-group-item">Item 4</a>

@@ -8,6 +8,7 @@
 
 $dir = require_once __DIR__ . '/../app_dir.php';
 
+define('WEB_ROOT', __DIR__);
 define('ROOT', $dir['dir']);
 
 require_once ROOT . '/vendor/autoload.php';

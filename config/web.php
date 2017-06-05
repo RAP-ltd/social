@@ -16,8 +16,12 @@ return [
             ]
         ],
         'rules' => [
+            "css/(.*)" => "frontend/index",
+            "fonts/(.*)" => "frontend/index",
+            "js/(.*)" => "frontend/index",
             "site/<param:\w+>/<user_id:\d+>" => "site/index",
             "id<user_id:\d+>" => "site/index",
+            "messages" => "messages/index",
             "<controller>/<action>" => "<controller>/<action>",
             "<action>" => "site/<action>",
             "<controller:\w+>" => "<controller>/index",
