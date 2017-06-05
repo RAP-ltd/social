@@ -62,11 +62,12 @@ use RAP\helpers\Calculator;
                 data: $form.serialize()
             }).done(function (data) {
                 var x = data.response
-                $('#test').html('X1 = ' + x.X1 + '; ');
-                $('#test').append('X2 = ' + x.X2 + '; ');
-                $('#test').append('X3 = ' + x.X3 + '; ');
+                $('#test').html('X<sub>1</sub> = ' + x.X1 + '; ');
+                $('#test').append('X<sub>2</sub> = ' + x.X2 + '; ');
+                $('#test').append('X<sub>3</sub> = ' + x.X3 + '; ');
                 console.log('success');
             }).fail(function () {
+                $('#test').html('<span class="alert-danger">(Ошибка!)</span>');
                 console.log('fail');
             });
             //отмена действия по умолчанию для кнопки submit
