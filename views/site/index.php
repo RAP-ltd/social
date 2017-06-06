@@ -9,12 +9,14 @@
 $this->title = 'R.A.P';
 
 use RAP\helpers\Calculator;
+use RAP\helpers\Html;
 
 ?>
 
 <div class="site-index">
     <div class="row">
         <div class="col-sm-3">
+            <?= Html::a('test', ['site/index', 'param' => 'prosto_text', 'user_id' => 10]) ?>
         </div>
         <div class="col-sm-6">
             <div class="list-group">

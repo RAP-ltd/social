@@ -8,6 +8,8 @@
 
 namespace RAP\helpers;
 
+use RAP\helpers\Url;
+
 class Html
 {
     public static function img($url, $params = [])
@@ -17,5 +19,19 @@ class Html
             $string .= " {$attribute}='{$value}'";
         }
         return $string . '>';
+    }
+
+    public static function a($name, $url, $params = [])
+    {
+        if (is_string($url)) {
+            $link = Url::to($url);
+        } elseif (is_array($url)) {
+            $link = Url::to(array_shift($url), $url);
+        }
+        $attributes = '';
+        foreach ($params as $attribute => $value) {
+            $attributes .= " {$attribute}='{$value}'";
+        }
+        return "<a href='{$link}'$attributes>{$name}</a>";
     }
 }

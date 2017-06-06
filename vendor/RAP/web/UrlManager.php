@@ -52,8 +52,7 @@ class UrlManager
             }
         }
         if (!preg_match("~<(\w+):\\\(\w)(\+)?(\*)?>~i", $p)) {
-            $pu = self::parseNewUrl($p, $rule);
-            return $pu;
+            return '/' . $p;
         }
 
         return false;
@@ -109,8 +108,7 @@ class UrlManager
             $file = explode('/', $controllerPath);
             $controllerClass = 'app\\controllers\\';
             for ($c = 0; $c < count($file); $c++) {
-                if ($c == (count($file) - 1))
-                {
+                if ($c == (count($file) - 1)) {
                     $controllerClass .= ucfirst(strtolower($file[$c])) . 'Controller';
                 } else {
                     $controllerClass .= strtolower($file[$c]) . '\\';
