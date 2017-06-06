@@ -10,6 +10,7 @@ namespace app\controllers;
 
 use RAP\web\Controller;
 use RAP\helpers\Calculator;
+use RAP\web\UrlManager;
 
 class SiteController extends Controller
 {
@@ -41,5 +42,11 @@ class SiteController extends Controller
             'response' =>
                 $X
         ]);
+    }
+
+    public function actionTest()
+    {
+        $url = new UrlManager();
+        return $url->createURL('site/index', ['user_id' => 1, 'param' => 'testing']);
     }
 }
