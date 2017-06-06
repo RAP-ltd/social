@@ -42,6 +42,9 @@ class UrlManager
         return $url . $r . http_build_query($params);
     }
 
+    /**
+     * Руками не трогать!
+     **/
     protected static function matchRules($rule, $params)
     {
         $p = $rule;
@@ -66,11 +69,14 @@ class UrlManager
         return true;
     }
 
-    protected static function parseNewUrl($url, $rule)
+    function parseNewUrl($url, $rule)
     {
         $route = self::parseUrl($url, $rule);
     }
 
+    /**
+     * Руками не трогать!
+     **/
     public static function parseURI($uri, $rule = null)
     {
         $config = APP_CONFIG;
@@ -101,6 +107,9 @@ class UrlManager
         return $pars;
     }
 
+    /**
+     * Руками не трогать!
+     **/
     protected static function parseRoute($uri)
     {
         if (preg_match("/^\/?(?<controller>([0-9a-z\/]+))\/(?<action>(\w+))\/?$/i", $uri, $matches)) {
