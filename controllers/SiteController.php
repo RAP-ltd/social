@@ -46,7 +46,6 @@ class SiteController extends Controller
 
     public function actionTest()
     {
-        $url = new UrlManager();
-        return $url->createURL('site/index', ['user_id' => 1, 'param' => 'testing']);
+        return "<a href='".UrlManager::createURL('messages/index', ['user_id' => 1, 'param' => 'testing'])."'>Messages</a>";
     }
 }

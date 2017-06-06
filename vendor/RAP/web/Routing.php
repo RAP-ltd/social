@@ -8,74 +8,22 @@
 
 namespace RAP\web;
 
+use RAP\web\UrlManager;
+
 class Routing
 {
-    protected $uri;
-    protected $controller;
-    protected $action;
-    protected $config;
     protected $params;
-    protected $request;
+    protected $route;
 
     public function __construct($config)
     {
-        $this->config = $config;
-        $this->uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-        foreach ($config['rules'] as $pattern2 => $route) {
-            $pattern = preg_replace("%<(\w+)\:\\\(\w\+?)>%i", "(?<$1>(\\\\$2))", $pattern2);
-            $pattern = preg_replace("%<controller>%i", "(?<controller>(.*))", $pattern);
-            $pattern = preg_replace("%<action>%i", "(?<action>(\w+))", $pattern);
-            if (@preg_match("%^(\/)?{$pattern}$%i", $this->uri, $params)) {
-                $route = str_replace([
-                    '<controller>',
-                    '<action>'
-                ], [
-                    $params['controller'],
-                    $params['action']
-                ], $route);
-                $this->uri = $route;
-                $this->params = $params;
-                if (isset($params['action'])) {
-                    $this->action = $params['action'];
-                }
-                break;
-            }
-        }
-        $this->parseURI();
-    }
-
-    protected function parseURI()
-    {
-        if (preg_match("/^\/?(?<controller>([0-9a-z\/]+))\/(?<action>(\w+))\/?$/i", $this->uri, $matches)) {
-            $controllerPath = $matches['controller'];
-            $file = explode('/', $controllerPath);
-            $controllerClass = 'app\\controllers\\';
-            for ($c = 0; $c < count($file); $c++) {
-                if ($c == (count($file) - 1))
-                {
-                    $controllerClass .= ucfirst(strtolower($file[$c])) . 'Controller';
-                } else {
-                    $controllerClass .= strtolower($file[$c]) . '\\';
-                }
-            }
-            $action = 'action' . ucfirst(strtolower($matches['action']));
-            if (class_exists($controllerClass) AND in_array($action, get_class_methods($controllerClass))) {
-                $this->controller = $controllerClass;
-                $this->action = $action;
-            } else {
-                $config = $this->config['errors']['error404'];
-                $this->controller = $config['controller'];
-                $this->action = $config['action'];
-            }
-        }
+        $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+        $this->route = UrlManager::parseURI($uri)->getRoute();
     }
 
     public function getRoute()
     {
-        return [
-            'controller' => $this->controller,
-            'action' => $this->action
-        ];
+        return $this->route;
     }
 
     public function getParams()
