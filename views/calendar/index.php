@@ -174,7 +174,7 @@ foreach ($dates as $date) {
     echo "<pre>";
 foreach ($arr as $dot) {
     $dateString = "{$date[2]}{$dot}{$date[1]}{$dot}{$date[0]}";
-    echo "validate({$dateString} as date) = "; print_r(Validator::date($dateString)); echo "<br>";
+    echo "validate({$dateString} as date) = "; print_r(Validator::date($dateString, true)); echo "<br>";
 }
     echo "</pre><br>";
 }
