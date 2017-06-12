@@ -16,6 +16,7 @@ return [
             ]
         ],
         'rules' => [
+            "api/<method:\w+>.<type:\w+>" => "api/index",
             "css/(.*)" => "frontend/index",
             "fonts/(.*)" => "frontend/index",
             "js/(.*)" => "frontend/index",

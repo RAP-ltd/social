@@ -8,7 +8,6 @@
 
 $this->title = 'R.A.P';
 
-use RAP\helpers\Calculator;
 use RAP\helpers\Html;
 
 ?>
